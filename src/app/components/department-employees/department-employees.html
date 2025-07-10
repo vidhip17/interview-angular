@@ -1,0 +1,39 @@
+<div class="container mt-4">
+  <h3>Employees Details</h3>
+  <div class="mb-3 row">
+    <label for="deptId" class="col-sm-2 col-form-label">Department ID:</label>
+    <div class="col-sm-4">
+      <input type="text" id="deptId" [(ngModel)]="deptId" class="form-control" placeholder="Enter Department ID" />
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-primary" (click)="getEmployees()">Search</button>
+    </div>
+    <div class="col-sm-4 text-sm-end mt-3 mt-sm-0">
+      <button (click)="downloadEmployeesByDeptReport()" class="btn btn-success">
+        <i class="bi bi-file-earmark-pdf-fill me-2"></i> Download PDF
+      </button>
+    </div>
+
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+  <table *ngIf="employees.length > 0" class="table table-bordered table-hover mt-3">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <!-- Add more headers as needed -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of employees" (click)="goToEmployee(emp)" style="cursor:pointer;">
+        <td>{{ emp.id }}</td>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="employees.length === 0 && !errorMessage">No employees found</div>
+</div>

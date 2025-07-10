@@ -1,0 +1,19 @@
+<div class="container mt-4">
+  <h3>Employee Detail (ID: {{ employeeId }})</h3>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+
+  <div *ngIf="employee; else noData">
+    <p><strong>Name:</strong> {{ employee.name }}</p>
+    <p><strong>Email:</strong> {{ employee.email }}</p>
+
+    <button class="btn btn-danger" (click)="deleteEmployee()">Delete Employee</button>
+    <button class="btn btn-secondary ms-2" (click)="goBack()">Back</button>
+  </div>
+
+  <ng-template #noData>
+    <p>No employee data available.</p>
+    <button class="btn btn-secondary" (click)="goBack()">Back</button>
+  </ng-template>
+</div>
