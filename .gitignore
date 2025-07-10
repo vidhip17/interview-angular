@@ -1,0 +1,46 @@
+# Node modules (do not commit dependencies)
+node_modules/
+
+# Angular cache and build output
+.angular/
+dist/
+out-tsc/
+
+# TypeScript
+*.tsbuildinfo
+
+# Environment files
+*.env
+*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE: VS Code
+.vscode/
+
+# OS: Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Compiled files
+*.class
+*.exe
+*.dll
+*.obj
+*.o
+*.so
+
+# Package manager lock files (optional)
+# Uncomment below to ignore lock files (not usually recommended)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Optional: coverage reports (from test tools like karma/istanbul)
+coverage/
