@@ -108,6 +108,7 @@ enableEdit() {
 
     this.employeeService.updateEmployee(this.employeeId, updatedEmployee).subscribe({
       next: () => {
+        this.errorMessage = '';
         this.successMessage = 'Employee updated successfully!';
         this.isEdit = false;
         this.loadEmployee();
