@@ -6,6 +6,15 @@ export interface Employee {
   id: number;
   name: string;
   email: string;
+  position: string;
+  salary: number;
+}
+
+export interface EmployeeEdit {
+  name: string;
+  email: string;
+  position: string;
+  salary: number;
 }
 
 @Injectable({
@@ -35,6 +44,10 @@ export class EmployeeService {
 
   downloadEmployeesByDeptReport(): Observable<Blob> {
     return this.http.get(`${this.baseUrl}/reports/employees-by-dept`, { responseType: 'blob' });
+  }
+
+  updateEmployee(empId: number, employee: EmployeeEdit): Observable<EmployeeEdit> {
+    return this.http.put<EmployeeEdit>(`${this.baseUrl}/employees/${empId}`, employee);
   }
   
 }
