@@ -31,7 +31,8 @@ export class DepartmentEmployees {
         this.employees = data;
       },
       error: (err) => {
-        this.errorMessage = 'Error fetching employees';
+        console.error('Error fetching employees:', err);
+        this.errorMessage = err.error?.message || 'Unknown error occurred';
         this.employees = [];
       }
     });
