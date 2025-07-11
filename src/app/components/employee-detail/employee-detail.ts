@@ -112,8 +112,23 @@ enableEdit() {
         this.isEdit = false;
         this.loadEmployee();
       },
-      error: () => {
-        this.errorMessage = 'Failed to update employee.';
+      error: (err) => {
+        if (err.status === 400) {
+          if (typeof err.error === 'string') {
+            this.errorMessage = err.error;
+          } else if (Array.isArray(err.error?.errors)) {
+            const errorMessages = err.error.errors
+              .map((e: any) => e.defaultMessage || e.message || 'Invalid input')
+              .join(', ');
+            this.errorMessage = errorMessages;
+          } else if (err.error?.message) {
+            this.errorMessage = err.error.message;
+          } else {
+            this.errorMessage = 'Bad Request - Invalid input.';
+          }
+        } else {
+          this.errorMessage = 'Failed to update employee.';
+        }
       }
     });
   }
